@@ -44,7 +44,7 @@ pipeline {
             }
 
             steps {
-              dir ('./'){
+              dir ('./server'){
                   sh '''
                   npm install&&
                   npm run lint
@@ -62,7 +62,7 @@ pipeline {
           steps {
             echo 'Test Backend'
 
-            dir ('./'){
+            dir ('./server'){
                 sh '''
                 npm install
                 npm run test
@@ -76,7 +76,7 @@ pipeline {
           steps {
             echo 'Build Backend'
 
-            dir ('./'){
+            dir ('./server'){
                 sh """
                 docker image build -t gyus13/temp:latest .
                 """
