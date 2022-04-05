@@ -35,41 +35,41 @@ pipeline {
             }
         }
         
-        stage('Lint Backend') {
-            // Docker plugin and Docker Pipeline 두개를 깔아야 사용가능!
-            agent {
-              docker {
-                image 'node:16'
-              }
-            }
+        // stage('Lint Backend') {
+        //     // Docker plugin and Docker Pipeline 두개를 깔아야 사용가능!
+        //     agent {
+        //       docker {
+        //         image 'node:16'
+        //       }
+        //     }
 
-            steps {
-              dir ('./server'){
-                  sh '''
-                  npm install&&
-                  npm run lint
-                  '''
-              }
-            }
-        }
+        //     steps {
+        //       dir ('./server'){
+        //           sh '''
+        //           npm install&&
+        //           npm run lint
+        //           '''
+        //       }
+        //     }
+        // }
 
-        stage('Test Backend') {
-          agent {
-            docker {
-              image 'node:16'
-            }
-          }
-          steps {
-            echo 'Test Backend'
+        // stage('Test Backend') {
+        //   agent {
+        //     docker {
+        //       image 'node:16'
+        //     }
+        //   }
+        //   steps {
+        //     echo 'Test Backend'
 
-            dir ('./server'){
-                sh '''
-                npm install
-                npm run test
-                '''
-            }
-          }
-        }
+        //     dir ('./server'){
+        //         sh '''
+        //         npm install
+        //         npm run test
+        //         '''
+        //     }
+        //   }
+        // }
         
         stage('Bulid Backend') {
           agent any
