@@ -2,6 +2,10 @@ pipeline {
     // 스테이지 별로 다른 거
     agent any
 
+    triggers {
+        pollSCM('*/3 * * * *')
+    }
+
     stages {
         // 레포지토리를 다운로드 받음
         stage('Prepare') {
@@ -87,11 +91,11 @@ pipeline {
         }
         
 
-        stage('Push Image') {
+        // stage('Push Image') {
         
-        			steps {
-        				sh 'docker push gyus13/temp:latest'
-        			}
-        		}
+        // 			steps {
+        // 				sh 'docker push gyus13/temp:latest'
+        // 			}
+        // 		}
     }
 }
